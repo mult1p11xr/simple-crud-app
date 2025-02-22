@@ -1,45 +1,40 @@
-version: '3'
+version: '3.8'
 
 services:
   db:
     image: mariadb:latest
-    container_name: mariadb
+    container_name: mariadb-container
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: crudapp
       MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD: user_password
     ports:
       - "3306:3306"
     volumes:
-      - mariadb-data:/var/lib/mysql
-
-  adminer:
-    image: adminer
-    container_name: adminer
-    ports:
-      - "8080:8080"
+      - db_data:/var/lib/mysql
+    networks:
+      - crudapp-network
 
   backend:
-    image: node:16
-    container_name: backend
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - .:/usr/src/app
+    build: ./backend
+    container_name: backend-container
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: user
+      DB_PASSWORD: user_password
+      DB_NAME: crudapp
     ports:
-      - "5000:5000"
+      - "3000:3000"
     depends_on:
       - db
+    networks:
+      - crudapp-network
 
-  frontend:
-    image: nginx:alpine
-    container_name: frontend
-    volumes:
-      - ./frontend:/usr/share/nginx/html
-    ports:
-      - "8081:80"
+networks:
+  crudapp-network:
+    driver: bridge
 
 volumes:
-  mariadb-data:
+  db_data:

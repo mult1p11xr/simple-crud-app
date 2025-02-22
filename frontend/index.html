@@ -45,7 +45,8 @@
     </table>
 
     <script>
-        const apiUrl = 'http://localhost:5000/api/items';
+    const apiUrl = 'http://localhost:5000/api/items';  // Use localhost instead of backend
+
 
         // Fetch and display all items
         function fetchItems() {
@@ -99,6 +100,30 @@
 
         // Initial fetch to load items
         fetchItems();
+
+        document.getElementById('createForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents the form from refreshing the page
+    const name = document.getElementById('name').value;
+    const description = document.getElementById('description').value;
+
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'  // Sending JSON data
+        },
+        body: JSON.stringify({ name, description }) // Send data as JSON
+    })
+    .then(response => response.text())
+    .then(() => {
+        fetchItems(); // Fetch and update the items list after adding a new one
+        document.getElementById('name').value = ''; // Clear the form fields
+        document.getElementById('description').value = '';
+    })
+    .catch(error => {
+        console.error("Error submitting the form:", error);
+    });
+});
+
     </script>
 </body>
 </html>
