@@ -19,7 +19,7 @@ services:
       environment:
         MYSQL_USER: mariadb
         MYSQL_PASSWORD: mariadb
-        MYSQL_DATABASE: simple_crud_app
+        MYSQL_DATABASE: db
         MARIADB_ROOT_PASSWORD: mariadb
       ports:
         - 3306:3306

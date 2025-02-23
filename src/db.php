@@ -1,18 +1,19 @@
 <?php
 
-$host = 
+$host = "mariadb";
 $sName = "mariadb";
-$uName = "root";
+$uName = "mariadb";
 $pass = "mariadb";
-$db_name = "simple_crud_app";
+$db_name = "db";
 
 try {
-    $conn = new PDO(
-        "mysql:host=$sName;dbname=$db_name",
-        $uName,
-        $pass
-    );
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Create a new PDO instance
+    $pdo = new PDO("mysql:host=$host;dbname=$db_name", $uName, $pass);
+    
+    // Set the PDO error mode to exception
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo "Connection failed : " . $e->getMessage();
+    // If there's an error, show it
+    die("Connection failed: " . $e->getMessage());
 }
+?>
