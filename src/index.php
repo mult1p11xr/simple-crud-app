@@ -15,7 +15,7 @@
 
 <body>
     <h1>To-Do List</h1>
-    <p>Vi testar C.R.U.D</p>
+    <p>a simple-crud-app</p>
 
     <ul>
         <li><a href="create.php">Create</a></li>
