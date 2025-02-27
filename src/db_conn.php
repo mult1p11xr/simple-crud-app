@@ -1,10 +1,9 @@
 <?php
 
-$host = 
 $sName = "mariadb";
-$uName = "root";
+$uName = "mariadb";
 $pass = "mariadb";
-$db_name = "simple_crud_app";
+$db_name = "mariadb";
 
 try {
     $conn = new PDO(
