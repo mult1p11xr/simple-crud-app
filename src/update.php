@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (!empty($title) && !empty($author) && !empty($genre) && !empty($id) && !empty($worthTheRead)) {
-        // Call the create function
         $updateResult = update($conn, $id, ["title" => $title, "author" => $author, "genre" => $genre, "worththeread" => $worthTheRead === 'on' ? 1 : 0]);
         $success = $updateResult ? "Allt OK" : "Nåt gick fel";
     } else {
@@ -31,37 +30,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Book</title>
+    <title>Update task</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Uppdatera bok</h1>
+    <h1>Update task</h1>
     <form method="POST" action="update.php">
         <label>
             Id:
             <input id="id" name="id" type="number" required>
         </label>
         <label>
-            Title:
+            Task:
             <input id="title" name="title" type="text" required>
         </label>
         <br>
         <label>
-            Author:
+            Description:
             <input id="author" name="author" type="text" required>
         </label>
         <br>
         <label>
-            Genre:
-            <input id="genre" name="genre" type="text" required>
-        </label>
-        <label>
-            Worth the read?:
-            <input id="worthTheRead" name="worthTheRead" type="checkbox">
+            Accomplished task?
+            <input id="accomplishedTask" name="accomplishedTask" type="checkbox">
         </label>
         <br>
-        <button type="submit">Uppdatera till bok</button>
+        <button type="submit">Update task</button>
     </form>
 
     <?= $success ?>

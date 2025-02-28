@@ -6,17 +6,19 @@ $result = read($conn);
 
 echo $result;
 
+//id, title, author, genre, worththeread -> id, task, description,  x genre, accomplishedTask
+
 
 try {
-    $stmt = $conn->prepare("SELECT id, title, author, genre, worththeread FROM to_do_list");
-   $stmt->execute();
+    $stmt = $conn->prepare("SELECT id, task, descript, accomplishedTask  FROM to_do_list");
+    $stmt->execute();
 
-   $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
     echo "<ul>";
     foreach ($stmt->fetchAll() as $row) {
         echo "<li>";
-        print($row["id"] . " " . $row["title"] . " " . $row["author"] . " - " . $row["genre"]);
+        print($row["id"] . " " . $row["task"] . " " . $row["description"]);
         echo "</li>";
     }
    echo "</ul>";

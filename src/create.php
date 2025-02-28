@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($title) && !empty($author) && !empty($genre)) {
         // Call the create function
         $createResult = create($conn, $title, $author, $genre);
-        $success = $createResult ? "Allt OK" : "Något gick fel";
+        $success = $createResult ? "Everything OK" : "Something went wrong";
     } else {
         echo "All fields are required!";
     }
@@ -31,24 +31,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <h1>Lägg till ny bok</h1>
+    <h1>Add task</h1>
     <form method="POST" action="create.php">
         <label>
-            Title:
+            Task:
             <input id="title" name="title" type="text" required>
         </label>
         <br>
         <label>
-            Author:
+            Description:
             <input id="author" name="author" type="text" required>
         </label>
         <br>
-        <label>
-            Genre:
-            <input id="genre" name="genre" type="text" required>
-        </label>
         <br>
-        <button type="submit">Lägg till bok</button>
+        <button type="submit">Add task</button>
     </form>
 
     <?= $success ?>

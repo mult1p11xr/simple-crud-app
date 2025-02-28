@@ -9,9 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = htmlspecialchars(trim($_POST['id']));
 
     if (!empty($id)) {
-        // Call the create function
         $deleteResult = delete($conn, $id);
-        $success = $deleteResult ? "Allt OK" : "Något gick fel";
+        $success = $deleteResult ? "Everything OK" : "Something went wrong";
     } else {
         echo "All fields are required!";
     }
@@ -24,18 +23,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Book</title>
+    <title>Delete task</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Ta bort bok</h1>
+    <h1>Remove task</h1>
     <form method="POST" action="delete.php">
         <div class="d-flex">
             <label class="form-label">Id:</label>
             <input id="id" name="id" type="number" required class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">Ta bort</button>
+        <button type="submit" class="btn btn-primary">Remove</button>
     </form>
 
     <?= $success ?>
