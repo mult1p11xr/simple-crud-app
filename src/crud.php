@@ -1,10 +1,10 @@
 <?php
 
 
-function create($conn, $title, $author, $genre)
+function create($conn, $task, $descript)
 {
     try {
-        $sql = "INSERT INTO to_do_list(title, author, genre) VALUES ('$title', '$author', '$genre')";
+        $sql = "INSERT INTO to_do_list(task, descript) VALUES ('$task', '$descript')";
 
         $conn->exec($sql);
     } catch (PDOException $e) {
@@ -28,7 +28,7 @@ function read($conn)
         echo "<ul>";
         foreach ($stmt->fetchAll() as $row) {
             echo "<li>";
-            print($row["id"] . " " . $row["title"] . " " . $row["author"] . " - " . $row["genre"]);
+            print($row["id"] . " " . $row["task"] . " " . $row["descript"]);
             echo "</li>";
         }
         echo "</ul>";
@@ -49,7 +49,7 @@ function update($conn, $id, $data)
 {
     try {
 
-        $sql = "UPDATE to_do_list SET genre='$data[genre]', author='$data[author]', title='$data[title]', worththeread='$data[worththeread]' WHERE id = $id";
+        $sql = "UPDATE to_do_list SET descript='$data[descript]', task='$data[task]', accomplishedTask='$data[accomplishedTask]' WHERE id = $id";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 

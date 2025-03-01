@@ -7,17 +7,16 @@ $success = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = htmlspecialchars(trim($_POST['id']));
-    $title = htmlspecialchars(trim($_POST['title']));
-    $author = htmlspecialchars(trim($_POST['author']));
-    $genre = htmlspecialchars(trim($_POST['genre']));
-    $worthTheRead = 'off';
-    if (isset($_POST['worthTheRead'])) {
-        $worthTheRead = $_POST['worthTheRead'];
+    $task = htmlspecialchars(trim($_POST['task']));
+    $descript = htmlspecialchars(trim($_POST['descript']));
+    $accomplishedTask = 'off';
+    if (isset($_POST['accomplishedTask'])) {
+        $accomplishedTask = $_POST['accomplishedTask'];
     }
 
-    if (!empty($title) && !empty($author) && !empty($genre) && !empty($id) && !empty($worthTheRead)) {
-        $updateResult = update($conn, $id, ["title" => $title, "author" => $author, "genre" => $genre, "worththeread" => $worthTheRead === 'on' ? 1 : 0]);
-        $success = $updateResult ? "Allt OK" : "Nåt gick fel";
+    if (!empty($task) && !empty($descript) && !empty($id) && !empty($accomplishedTask)) {
+        $updateResult = update($conn, $id, ["task" => $task, "descript" => $descript, "accomplishedTask" => $accomplishedTask=== 'on' ? 1 : 0]);
+        $success = $updateResult ? "Everything OK" : "Something went wrong";
     } else {
         echo "All fields are required!";
     }
@@ -43,12 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </label>
         <label>
             Task:
-            <input id="title" name="title" type="text" required>
+            <input id="task" name="task" type="text" required>
         </label>
         <br>
         <label>
             Description:
-            <input id="author" name="author" type="text" required>
+            <input id="descript" name="descript" type="text" required>
         </label>
         <br>
         <label>

@@ -6,13 +6,12 @@ include_once('crud.php');
 $success = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = htmlspecialchars(trim($_POST['title']));
-    $author = htmlspecialchars(trim($_POST['author']));
-    $genre = htmlspecialchars(trim($_POST['genre']));
+    $task = htmlspecialchars(trim($_POST['task']));
+    $descript = htmlspecialchars(trim($_POST['descript']));
 
-    if (!empty($title) && !empty($author) && !empty($genre)) {
+    if (!empty($task) && !empty($descript)) {
         // Call the create function
-        $createResult = create($conn, $title, $author, $genre);
+        $createResult = create($conn, $task, $descript);
         $success = $createResult ? "Everything OK" : "Something went wrong";
     } else {
         echo "All fields are required!";
@@ -26,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Book</title>
+    <title>Create task</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -35,12 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form method="POST" action="create.php">
         <label>
             Task:
-            <input id="title" name="title" type="text" required>
+            <input id="task" name="task" type="text" required>
         </label>
         <br>
         <label>
             Description:
-            <input id="author" name="author" type="text" required>
+            <input id="descript" name="descript" type="text" required>
         </label>
         <br>
         <br>
