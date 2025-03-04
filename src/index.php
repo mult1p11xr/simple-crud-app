@@ -1,6 +1,8 @@
 <?php
 
 //fix the arrays & sql
+
+//check database
 ?>
 
 <!DOCTYPE html>
