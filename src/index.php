@@ -3,6 +3,8 @@
 //fix the arrays & sql
 
 //check database
+
+//do FE if bored
 ?>
 
 <!DOCTYPE html>
