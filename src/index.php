@@ -5,6 +5,8 @@
 //check database
 
 //do FE if bored
+
+//get this finished and continue with new project
 ?>
 
 <!DOCTYPE html>
