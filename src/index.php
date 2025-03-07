@@ -7,6 +7,8 @@
 //do FE if bored
 
 //get this finished and continue with new project
+
+//figure out the tables-issue
 ?>
 
 <!DOCTYPE html>
