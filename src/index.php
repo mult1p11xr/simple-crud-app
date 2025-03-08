@@ -9,6 +9,8 @@
 //get this finished and continue with new project
 
 //figure out the tables-issue
+
+//making this a habbit
 ?>
 
 <!DOCTYPE html>
