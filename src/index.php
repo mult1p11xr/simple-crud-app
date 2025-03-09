@@ -11,6 +11,8 @@
 //figure out the tables-issue
 
 //making this a habbit
+
+//taken a while on this, been busy, getting back to it when i have time
 ?>
 
 <!DOCTYPE html>
