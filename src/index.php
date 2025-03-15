@@ -15,6 +15,8 @@
 //taken a while on this, been busy, getting back to it when i have time
 
 //check sql-issue
+
+//abandon ship?
 ?>
 
 <!DOCTYPE html>
